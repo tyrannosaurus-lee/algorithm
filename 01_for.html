@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[재귀함수] 반복문을 이용한 1부터 100까지의 합과 곱(반복문)</title>
+</head>
+<body>
+<script>
+// 재귀함수
+// 내가 나를 호출하는 함수
+// 반복문 <-> 재귀함수
+
+// 더하기
+let s = 0;
+for (var let i= 1; i < 101; i++){
+    s += i;
+}
+// O(n)
+console.log(s);
+
+//고ㅂ하기 : 시작이 0이 아닌 1이고 i에 +가 아닌 *임에 유의
+let m = 1;
+for (var let i= 1; i < 6; i++){
+    s *= i;
+}
+
+
+
+// big-0 표기법 : 얼만큼 반복을 하고 있나의 척도
+// O(1)
+let n = 100;
+console.log(n*(n+1)/2);
+</script>
+</body>
+</html>
