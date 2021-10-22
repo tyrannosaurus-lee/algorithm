@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm</title>
+    <style>
+        body {
+            font-family:-apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+            background:#d0d0d0;}
+        h1 {padding:1em;color:#444;}
+        li {padding:1.1em 1.125em 1.1em 0; list-style:none;}
+        a {color:#434a58; text-decoration:none;}
+        a:hover {font-weight:700; color:#444;}
+    </style>
+</head>
+<body>
+    <h1>Algorithm</h1>
+    <ul></ul>
+    <script>
+        const $ul = document.querySelector('ul');
+        let algorithmList = [];
+        const dataList = [
+            {
+                id: 1,
+                title: '[재귀함수] 반복문을 이용한 1부터 100까지의 합과 곱(반복문)',
+                link: '1_a.html'
+            },
+            {
+                id: 2,
+                title: '[재귀함수] 재귀함수를 이용한 1부터 100가지의 합과 곱(재귀함수)',
+                link: '2_b.html'
+            },
+            {
+                id: 3,
+                title: '[재귀함수] 2진수 변환',
+                link: '3_c.html'
+            },
+            {
+                id: 4,
+                title: '[재귀함수] 각 자릿수의 합',
+                link: '4_d.html'
+            },
+            {
+                id: 5,
+                title: '[재귀함수] 피보나치',
+                link: '5_e.html'
+            },
+            {
+                id: 6,
+                title: '[재귀함수] 피보나치',
+                link: '6_f.html'
+            },
+            {
+                id: 7,
+                title: '최솟값과 최댓값 구하기',
+                link: '7_.html'
+            },
+            {
+                id: 8,
+                title: '최솟값과 최댓값 - reduce',
+                link: '8_.html'
+            },
+            {
+                id: 9,
+                title: '[정렬] 정렬이론',
+                link: '9_.html'
+            },
+            {
+                id: 10,
+                title: '[정렬] 선택정렬',
+                link: '10_.html'
+            },
+            {
+                id: 11,
+                title: '[정렬] 삽입정렬',
+                link: '11_.html'
+            },
+            {
+                id: 12,
+                title: '[정렬] 병합정렬',
+                link: '12_.html'
+            },
+            {
+                id: 13,
+                title: '[정렬] 퀵정렬',
+                link: '13_.html'
+            },
+            {
+                id: 14,
+                title: '트리와 그래프',
+                link: '14_.html'
+            },
+            {
+                id: 15,
+                title: '깊이우선 탐색과 너비우선 탐색_이론',
+                link: '15_.html'
+            },
+        ];
+
+        // 1. for
+        // for(let i= 0; i < dataList.length; i++){
+        //     let listCon = `
+        //         <li>
+        //             <a href="${dataList[i].link}" target="_blank">
+        //                 ${dataList[i].title}
+        //             </a>
+        //         </li>
+        //     `;
+        //     algorithmList += listCon;
+        // }
+
+
+        // 2. forEach
+        dataList.forEach( e => {
+            let listCon = `
+                <li>
+                    <a href="${e.link}" target="_blank">
+                        ${e.title}
+                    </a>
+                </li>
+            `;
+            algorithmList += listCon;
+        })
+
+
+        // 3. for in
+        // for (let item in dataList) {
+        //     // $ul.append(`<li><a href="${ dataList[item].link }" target="_blank">${ dataList[item].title }</a></li>`);
+        //     let listCon = `
+        //         <li>
+        //             <a href="${dataList[item].link}" target="_blank">
+        //                 ${dataList[item].title}
+        //             </a>
+        //         </li>
+        //     `;
+        //     algorithmList += listCon;
+        // }
+
+
+        $ul.innerHTML = algorithmList;
+
+    </script>
+</body>
+</html>
