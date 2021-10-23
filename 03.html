@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[재귀함수] 2진수 변환</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<script>
+    // 재귀함수 사례 - 2진수 변환
+    //  2   11  1
+    //  2   5   1
+    //  2   2   0
+    //      1
+
+    let result='';
+    let x = 11;
+    while (true){
+        if(x%2 == 0){
+            result += '0'
+        }else{
+            result += '1'
+        }
+        x = Math.floor(x / 2);
+        // Math.ceil() : 소수점 올림
+        // Math.floor() : 소수점 버림
+        // Math.round() : 소수점 반올림
+
+        // 종료조건
+        if(x == 1 || x == 0){
+            result += String(x);
+            break;
+        }
+    }
+    // 아래서부터 뒤집어서 출력해야 함.
+    console.log(result.split('').reverse().join(''));
+</script>
+</body>
+</html>
