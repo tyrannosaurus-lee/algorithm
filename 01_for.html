@@ -5,8 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[재귀함수] 반복문을 이용한 1부터 100까지의 합과 곱(반복문)</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <p class="tit">O(n)</p>
+    <p class="explanation">입력 데이터 크기에 상관없이 언제나 일정한 시간이 걸리는 알고리즘</p>
+    <img src="./img/Big-0_o(n)_1.png" alt="빅오 o(n)">
+    <img src="./img/Big-0_o(n)_2.png" alt="빅오 o(n)">
+    <img src="./img/Big-0_o(n)_3.png" alt="빅오 o(n)">
+    <p class="tit">O(1)</p>
+    <p class="explanation">입력 데이터 크기에 비례해서 처리 시간이 걸리는 알고리즘</p>
+    <img src="./img/Big-o_o(1)_1.png" alt="빅오 o(1)">
+    <img src="./img/Big-o_o(1)_2.png" alt="빅오 o(1)">
 <script>
 // 재귀함수
 // 내가 나를 호출하는 함수
@@ -17,19 +27,18 @@ let s = 0;
 for (var let i= 1; i < 101; i++){
     s += i;
 }
-// O(n)
+// O(n) : 입력 데이터 크기에 비례해서 처리 시간이 걸리는 알고리즘
 console.log(s);
 
-//고ㅂ하기 : 시작이 0이 아닌 1이고 i에 +가 아닌 *임에 유의
+//곱하기 : 시작이 0이 아닌 1이고 i에 +가 아닌 *임에 유의
 let m = 1;
 for (var let i= 1; i < 6; i++){
     s *= i;
 }
 
 
-
 // big-0 표기법 : 얼만큼 반복을 하고 있나의 척도
-// O(1)
+// O(1) : 입력 데이터 크기에 상관없이 언제나 일정한 시간이 걸리는 알고리즘
 let n = 100;
 console.log(n*(n+1)/2);
 </script>
