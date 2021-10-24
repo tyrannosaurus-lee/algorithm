@@ -9,13 +9,14 @@
 </head>
 <body>
 <script>
-    // 재귀함수 사례 - 2진수 변환
+    // 반복문
 
     let result='';
     let x = 'tyrannosaurus-lee';
     while (true){
         if(x.length == 1){
             result += x;
+            // 정순 : result = x + result;
             break;
         }
         // String에서는 pop이 없음. Array에 있음
@@ -23,9 +24,50 @@
         let y = x.split('');
         console.log(y);
         result += String(y.pop());
+        // 정순 : result = String(y.pop()) + result;
         x = y.join('');
     }
     console.log(result);
+
+
+    // 재귀함수
+    function 문자열역순(문자){
+        if(문자.length == 1){
+            return 문자
+        }
+        console.log(문자.slice(0, 문자.length-1));
+        return 문자[문자.length-1] + 문자열역순(문자.slice(0, 문자.length-1));
+    }
+    console.log(문자열역순('tyrannosaurus-lee'));
+    // 문자열역순('tyrannosaurus-lee')  문자[16] + 문자열역순(문자.slice(0, 16))
+    // 문자열역순('tyrannosaurus-lee')  'e' + 문자열역순('tyrannosaurus-le')  -> eel-suruasonnaryt
+
+    // 문자열역순('tyrannosaurus-le')  문자[15] + 문자열역순(문자.slice(0, 15))
+    // 문자열역순('tyrannosaurus-le')  'e' + 문자열역순('tyrannosaurus-l')  -> el-suruasonnaryt
+
+    // 문자열역순('tyrannosaurus-l')  문자[14] + 문자열역순(문자.slice(0, 14))
+    // 문자열역순('tyrannosaurus-l')  'l' + 문자열역순('tyrannosaurus-')  -> l-suruasonnaryt
+
+    // 문자열역순('tyrannosaurus-')  문자[13] + 문자열역순(문자.slice(0, 13))
+    // 문자열역순('tyrannosaurus-')  '-' + 문자열역순('tyrannosaurus')    -> -suruasonnaryt
+
+    // 문자열역순('tyrannosaurus')  문자[12] + 문자열역순(문자.slice(0, 12))
+    // 문자열역순('tyrannosaurus')  's' + 문자열역순('tyrannosauru')    -> suruasonnaryt
+
+    // ....
+
+    // 문자열역순('tyra')  문자[3] + 문자열역순(문자.slice(0, 3))
+    // 문자열역순('tyra')  'a' + 문자열역순('tyr')      -> aryt
+
+    // 문자열역순('tyr')  문자[2] + 문자열역순(문자.slice(0, 2))
+    // 문자열역순('tyr')  'r' + 문자열역순('ty')      -> ryt
+
+    // 문자열역순('ty')  문자[1] + 문자열역순(문자.slice(0, 1))
+    // 문자열역순('ty')  'y' + 문자열역순('t')      ->  yt
+
+    // 문자열역순('t')  문자[1] + 문자열역순(문자.slice(0, 1))
+    // 문자열역순('t')  t      ->  t
+
 </script>
 </body>
 </html>
