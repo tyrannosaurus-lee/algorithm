@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[재귀함수] 문자열 뒤집기</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<script>
+    // 재귀함수 사례 - 2진수 변환
+
+    let result='';
+    let x = 'tyrannosaurus-lee';
+    while (true){
+        if(x.length == 1){
+            result += x;
+            break;
+        }
+        // String에서는 pop이 없음. Array에 있음
+        // result += String(x.pop());
+        let y = x.split('');
+        console.log(y);
+        result += String(y.pop());
+        x = y.join('');
+    }
+    console.log(result);
+</script>
+</body>
+</html>
