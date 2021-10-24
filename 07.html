@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최솟값과 최댓값 구하기</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<script>
+    // 최솟값과 최댓값
+    let a = [10, 20, 30, 1, 2, 3, 5, 9, 11]
+
+    a.sort();
+    console.log(a[0]);
+    console.log(a[a.length-1]);
+    console.log(a);
+
+    // Math.max와 Math.min 모두 array를 넣지 못함.
+    console.log(Math.max(a));
+    console.log(Math.max(10, 20));
+    console.log(Math.min(10, 20));
+
+    console.log(Math.max.apply(null, a));
+    console.log(Math.min.apply(null, a));
+
+
+
+    // 반복문
+    let m = a[0];
+    for (let variable of a){
+        // 최대값 variable > m
+        // 최소값 variable < m
+        if(variable > m){
+            m = variable
+        } 
+    }
+    console.log(m);
+</script>
+</body>
+</html>
