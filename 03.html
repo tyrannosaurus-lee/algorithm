@@ -15,6 +15,7 @@
     //  2   2   0
     //      1
 
+    // 반복문으로 이진법 표현
     let result='';
     let x = 11;
     while (true){
@@ -36,6 +37,32 @@
     }
     // 아래서부터 뒤집어서 출력해야 함.
     console.log(result.split('').reverse().join(''));
+
+
+
+
+    // 재귀함수로 이진법 표현
+    function 이진법(숫자){
+        if(숫자 == 1 || 숫자 == 0){
+            return String(숫자)
+        }
+        // 순서에 유의 : 이진법(Math.floor(숫자 / 2)) + String(숫자 % 2) 
+        return 이진법(Math.floor(숫자 / 2)) + String(숫자 % 2) 
+    }
+    console.log(이진법(11));
+    // 이진법(11)       이진법(Math.floor(11 / 2)) + String(11 % 2) 
+    //                이진법(5) + String(1) 
+    //                101 + String(1)
+
+    // 이진법(5)        이진법(Math.floor(5 / 2)) + String(5 % 2)
+    //                이진법(2) + String(1) 
+    //                10 + String(1)
+
+    // 이진법(2)        이진법(Math.floor(2 / 2)) + String(2 % 2)
+    //                이진법(1) + String(0)
+    //                1 + String(0)
+
+    // 이진법(1)        1 
 </script>
 </body>
 </html>
