@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[정렬] 삽입정렬</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <p class="tit">삽입정렬</p>
+    <p class="explanation">선택정렬은 전체 모든 아이템을 스캔함</p>
+    <p class="explanation">삽입정렬은 선택정렬보다 빠름.</p>
+    <p class="explanation">삽입정렬은 필요한 아이템만 스캔을 하기 때문.</p>
+    <p class="explanation">하지만 선택정렬과 삽입정렬의 시간복잡도는  동일하게 O(n^2)임</p>
+    <img src="./img/삽입정렬1.png" alt="삽입정렬">
+    <img src="./img/삽입정렬2.png" alt="삽입정렬">
+    <img src="./img/삽입정렬3.png" alt="삽입정렬">
+    <img src="./img/삽입정렬4.png" alt="삽입정렬">
+    <img src="./img/삽입정렬5.png" alt="삽입정렬">
+    <img src="./img/삽입정렬6.png" alt="삽입정렬">
+    <img src="./img/삽입정렬7.png" alt="삽입정렬">
+    <img src="./img/삽입정렬8.png" alt="삽입정렬">
+    <img src="./img/삽입정렬9.png" alt="삽입정렬">
+    <img src="./img/삽입정렬10.png" alt="삽입정렬">
+    <img src="./img/삽입정렬11.png" alt="삽입정렬">
+    <p class="explanation">참고 : https://www.youtube.com/watch?v=Bor_CRWEIXo</p>
+<script>
+    // 삽입정렬
+
+    // [10, 66, 77, 54, 32, 11, 15]
+    // [5]
+
+    // [66, 77, 54, 32, 11, 15]
+    // [5, 10]
+
+    // [77, 54, 32, 11, 15]
+    // [5, 10, 66]
+
+    // [54, 32, 11, 15]
+    // [5, 10, 66, 77]
+
+    // [32, 11, 15]
+    // [5, 10, 54, 66, 77]
+
+    let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
+    let 정렬된배열 = [];
+    let 배열의길이 = 입력값.length
+    // for(let i = 0; i < 입력값.length; i++)처럼
+    // for문에 넣으면 입력값이 하나씩 빠질때마다 length도 줄어들기 때문에 변수에 저장함.
+    console.log(배열의길이);
+
+    function 삽입값이들어갈인덱스(정렬된배열, 삽입값){
+        for (const i in 정렬된배열) {
+            if (삽입값 < 정렬된배열[i]) {
+                return i
+            }
+        }
+        return 정렬된배열.length
+    }
+
+    for (let i = 0; i < 배열의길이; i++){
+        삽입값 = 입력값.shift()
+        인덱스 = 삽입값이들어갈인덱스(정렬된배열, 삽입값)
+        // replace할게 아닌 삽입할 것이므로 splice두번째는 0
+        정렬된배열.splice(인덱스, 0, 삽입값);
+        console.log(`인덱스 : ${인덱스}`)
+        console.log(`정렬된배열 : ${정렬된배열}`)
+    }
+</script>
+</body>
+</html>
