@@ -4,36 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>최솟값과 최댓값 - reduce</title>
+    <title>[정렬] 삽입정렬</title>
     <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    https://www.youtube.com/watch?v=Bor_CRWEIXo
+    <p class="tit">선택정렬</p>
+    <p class="explanation">선택정렬은 전체 모든 아이템을 스캔함</p>
+    <p class="explanation">삽입정렬은 선택정렬보다 빠름.</p>
+    <p class="explanation">삽입정렬은 필요한 아이템만 스캔을 하기 때문.</p>
+    <p class="explanation">하지만 선택정렬과 삽입정렬의 시간복잡도는  동일하게 O(n^2)임</p>
+    <img src="./img/선택정렬1.png" alt="피보나치순열">
+    <img src="./img/선택정렬2.png" alt="피보나치순열">
+    <img src="./img/선택정렬3.png" alt="피보나치순열">
+    <img src="./img/선택정렬4.png" alt="피보나치순열">
+    <img src="./img/선택정렬5.png" alt="피보나치순열">
+    <img src="./img/선택정렬6.png" alt="피보나치순열">
+    <img src="./img/선택정렬7.png" alt="피보나치순열">
+    <img src="./img/선택정렬8.png" alt="피보나치순열">
+    <img src="./img/선택정렬9.png" alt="피보나치순열">
+    <img src="./img/선택정렬10.png" alt="피보나치순열">
+    <img src="./img/선택정렬11.png" alt="피보나치순열">
+    <img src="./img/선택정렬12.png" alt="피보나치순열">
+    <img src="./img/선택정렬13.png" alt="피보나치순열">
+    <p class="explanation">참고 : https://www.youtube.com/watch?v=Bor_CRWEIXo</p>
+    <p class="explanation">참고 : https://www.youtube.com/watch?v=uCUu3fF5Dws</p>
 
- 선택정렬 :
- https://www.youtube.com/watch?v=uCUu3fF5Dws
 
- 삽입정렬은 선택정렬보다 빠름.
- 선택정렬은 전체 모든 아이템을 스캔함
- 삽입정렬은 필요한 아이템만 스캔을 하기 때문.
- 하지만 선택정렬과 삽입정렬의 시간복잡도는  동일하게 O(n^2)임
-
- 병합정렬은 별도의 저장공간을 필요로 하기 때문에 공간을 사용할 수 없는 경우에는 퀵정렬을 이용해야 함
+ <!-- 병합정렬은 별도의 저장공간을 필요로 하기 때문에 공간을 사용할 수 없는 경우에는 퀵정렬을 이용해야 함
 
 병합정렬 : https://www.youtube.com/watch?v=QAyl79dCO_k&t=235s
- 퀵정렬 : https://www.youtube.com/watch?v=7BDzle2n47c
+ 퀵정렬 : https://www.youtube.com/watch?v=7BDzle2n47c -->
 <script>
-    // 최솟값과 최댓값
-    let a = [6, 5, 4, 3, 2]
-    const reducerOne = (accumulator, currentvalue) => accumulator + currentvalue;
-    const reducerTwo = (accumulator, currentvalue) => accumulator - currentvalue;
-    const reducerThree = (accumulator, currentvalue) => accumulator > currentvalue ? accumulator : currentvalue;
-    const reducerFour= (accumulator, currentvalue) => accumulator < currentvalue ? accumulator : currentvalue;
+    // 선택정렬
 
-    console.log(a.reduce(reducerOne));
-    console.log(a.reduce(reducerTwo));
-    console.log(a.reduce(reducerThree));
-    console.log(a.reduce(reducerFour));
+    let a = [10, 11, 9, 2, 3, 6, 5, 4];
+    let 정렬된배열 = [];
+
+
+    // while (a){
+    // 
+    // }
+
+    // function min(){
+
+    // }
+
+    // 반복문
+    for (let i = 0; i < a.length; i++){
+        정렬된배열.push(Math.min.apply(null, a));
+        //  cf) pop, push, shift, unshift
+        a.splice(a.indexOf(Math.min.apply(null, a)), 1);
+        console.log(a);
+        console.log(정렬된배열);
+    }
 
 </script>
 </body>
