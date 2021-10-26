@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최솟값과 최댓값 - reduce</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    https://www.youtube.com/watch?v=Bor_CRWEIXo
+
+ 선택정렬 :
+ https://www.youtube.com/watch?v=uCUu3fF5Dws
+
+ 삽입정렬은 선택정렬보다 빠름.
+ 선택정렬은 전체 모든 아이템을 스캔함
+ 삽입정렬은 필요한 아이템만 스캔을 하기 때문.
+ 하지만 선택정렬과 삽입정렬의 시간복잡도는  동일하게 O(n^2)임
+
+ 병합정렬은 별도의 저장공간을 필요로 하기 때문에 공간을 사용할 수 없는 경우에는 퀵정렬을 이용해야 함
+
+병합정렬 : https://www.youtube.com/watch?v=QAyl79dCO_k&t=235s
+ 퀵정렬 : https://www.youtube.com/watch?v=7BDzle2n47c
+<script>
+    // 최솟값과 최댓값
+    let a = [6, 5, 4, 3, 2]
+    const reducerOne = (accumulator, currentvalue) => accumulator + currentvalue;
+    const reducerTwo = (accumulator, currentvalue) => accumulator - currentvalue;
+    const reducerThree = (accumulator, currentvalue) => accumulator > currentvalue ? accumulator : currentvalue;
+    const reducerFour= (accumulator, currentvalue) => accumulator < currentvalue ? accumulator : currentvalue;
+
+    console.log(a.reduce(reducerOne));
+    console.log(a.reduce(reducerTwo));
+    console.log(a.reduce(reducerThree));
+    console.log(a.reduce(reducerFour));
+
+</script>
+</body>
+</html>
