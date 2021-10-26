@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[정렬] 병합정렬</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <p class="tit">병합정렬 - O(n log n)</p>
+    <p class="explanation">병합정렬은 별도의 저장공간을 필요로 하기 때문에 공간을 사용할 수 없는 경우에는 퀵정렬을 이용해야 함</p>
+    <img src="./img/병합정렬1.png" alt="병합정렬">
+    <p class="explanation">참고 : https://www.youtube.com/watch?v=QAyl79dCO_k&t=235s</p>
+
+<script>
+    let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
+
+    // 분할
+    // [5, 10, 66, 77], [54, 32, 11,15]
+    // [5, 10], [66, 77], [54, 32], [11, 15]
+    // [5], [10], [66], [77], [54], [32], [11], [15]
+    // 정복
+    // [5, 10], [66, 77], [54, 32], [11, 15]
+    // [5, 10, 66, 77], [32, 54, 11, 15]
+    // [5, 10, 11, 15, 32, 54, 66, 77]
+
+    function 병합정렬(입력배열){
+        let 입력배열의길이 = 입력배열.length;
+        let 결과값 = [];
+        if (입력배열의길이 <= 1){
+            return 입력배열
+        }
+        let 중간값 = parseInt(입력배열의길이/2);
+        let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+        let 그룹둘 = 병합정렬(입력배열.slice(중간값,));
+
+        while (그룹하나.length != 0 && 그룹둘.length != 0){
+            if(그룹하나[0] < 그룹둘[0]){
+                결과값.push(그룹하나.shift());
+            } else {
+                결과값.push(그룹둘.shift());
+            }
+        }
+
+        while (그룹하나.length != 0){
+            결과값.push(그룹하나.shift());
+        }
+
+        while (그룹둘.length != 0){
+            결과값.push(그룹둘.shift());
+        }
+        // return `그룹하나 : ${그룹하나}, 그룹둘 : ${그룹둘}\n`
+        return 결과값
+    }
+
+    console.log(병합정렬(입력값))
+</script>
+</body>
+</html>
