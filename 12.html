@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[정렬] 퀵정렬</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <p class="tit">퀵정렬</p>
+    <p class="explanation">병합정렬과 다른점은 pivot값을 사용한다는 것</p>
+    <p class="explanation">병합정렬은 별도의 저장공간을 필요로 하기 때문에 공간을 사용할 수 없는 경우에는 퀵정렬을 이용해야 함</p>
+    <img src="./img/퀵정렬1.png" alt="퀵정렬">
+    <img src="./img/퀵정렬2.png" alt="퀵정렬">
+    <img src="./img/퀵정렬3.png" alt="퀵정렬">
+    <img src="./img/퀵정렬4.png" alt="퀵정렬">
+    <img src="./img/퀵정렬5.png" alt="퀵정렬">
+    <img src="./img/퀵정렬6.png" alt="퀵정렬">
+    <img src="./img/퀵정렬7.png" alt="퀵정렬">
+    <img src="./img/퀵정렬8.png" alt="퀵정렬">
+    <img src="./img/퀵정렬9.png" alt="퀵정렬">
+    <img src="./img/퀵정렬10.png" alt="퀵정렬">
+    <img src="./img/퀵정렬11.png" alt="퀵정렬">
+    <img src="./img/퀵정렬12.png" alt="퀵정렬">
+    <p class="explanation">참고 : https://www.youtube.com/watch?v=7BDzle2n47c</p>
+
+<script>
+    // 퀵정렬 -  worst: O(n log2n), best:O(n**2)
+    let 입력값 = [66, 77, 54, 32, 10, 5, 11, 15];
+
+    // [66, 77, 54, 32, 10, 5, 11, 15]
+
+    // 피봇값: 66
+    // [54, 32, 10, 5, 11, 15] + [66] + [77]
+
+    // 피봇값 : 54
+    // [32, 10, 5, 11, 15] + [54] + [66] + [77]
+
+    // 피봇값 : 32
+    // [10, 5, 11, 15] + [32] + [54] + [66] + [77]
+
+    // 피봇값 : 10
+    // [5] + [10] + [11, 15] + [32] + [54] + [66] + [77]
+
+    // 피봇값 : 11
+    // [5] + [10] + [11] + [15] + [32] + [54] + [66] + [77]
+
+    function 퀵정렬(입력배열){
+        let 입력배열의길이 = 입력배열.length;
+
+        if(입력배열의길이 <= 1){
+            return 입력배열
+        }
+
+        let 피벗값 = [입력배열.shift()];
+        let 그룹하나 = [];
+        let 그룹둘 = [];
+
+        for (let i in 입력배열) {
+            if (입력배열[i] < 피벗값){
+                그룹하나.push(입력배열[i]);
+            } else {
+                그룹둘.push(입력배열[i]);
+            }
+        }
+        console.log(`그룹하나 : ${그룹하나} \n그룹둘 : ${그룹둘}\n피벗값 : ${피벗값}`)
+        return 퀵정렬(그룹하나).concat(피벗값, 퀵정렬(그룹둘));
+    }
+
+    console.log(퀵정렬(입력값));
+
+</script>
+</body>
+</html>
