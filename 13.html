@@ -12,7 +12,7 @@
     <p class="explanation">이진트리 : 포화이진트리, 완전이진트리</p>
     <p class="explanation">이진트리의 순회 : 전위순회, 중위순회, 후위순회</p>
     <p class="explanation">전위순회 : 루트 노트부터 잎 노드까지 아래 방향으로 방문</p>
-    <p class="explanation">중위순회 : 왼쪽 하위 트리부터 오른쪽 하위 트리 방향으로 방문</p>
+    <p class="explanation">중위순회 : 왼->중->오  왼쪽 하위 트리부터 오른쪽 하위 트리 방향으로 방문</p>
     <p class="explanation">후위순회 : 잎 노드를 모두 탐색하고 루트노드 방문</p>
     <img src="./img/트리.png" alt="트리">
     <img src="./img/트리의순회1.png" alt="트리의순회">
@@ -34,7 +34,20 @@
     <p class="explanation">그래프 알고리즘 : BFS(넓이 우선 탐색), DFS(깊이 우선 탐색)</p>
     <p class="explanation">BFS(넓이 우선 탐색) : 가까운 정점을 먼저 방문, 먼 정점은 나중에 방문함.</p>
     <p class="explanation">DFS(깊이 우선 탐색) : 현재 정점에서 한 방향으로 가면서 검사함. 막힌 정점은 포기하고 마지막에 따라온 간선으로 되돌아 간다.</p>
-    
+        function makingFree (arr, root, i){
+            if(i < arr.length){
+                root = new Node(arr[i]);    // Node 만들기
+                root.left = makingTree(arr, root.left, 2 * i + 1)   // left값 넣기
+                root.right = makingTree(arr, root.right, 2 * i +2)  // right값 넣기
+                turn root   // Node 반환 (재귀! : 재귀함수는 반드시 종료조건!)
+            }
+        }
+    <p class="explanation"></p>
+    <p class="explanation"></p>
+    <p class="explanation"></p>
+    <p class="explanation"></p>
+    <p class="explanation"></p>
+    <p class="explanation"></p>
 <script>
 
 
