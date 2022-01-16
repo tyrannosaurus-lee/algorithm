@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>골드바흐파티션</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <p class="tit">골드바흐파티션</p>
+    <p class="explanation">
+        골드바흐파티션 : 2보다 큰 모든 짝수는 두 개의 소수(Prime number)의 합으로 표시할 수 있다는 것이다.
+    </p>
+    <p class="explanation">그 차가 작은 것을 출력하거나 그 차가 큰 것 모두 출력하시오.</p>
+    <img class="code" src="./img/18.png" alt="">
+<script>
+    // 골드바흐 파티션
+    let prime = []; //소수를 저장하는 변수
+    let isPrime = true;// 소수일때 true;
+    let val  = 100; // 주어진 n값
+    let 골드바흐파티션 = [];
+
+    // 소수구하기
+    for(let i = 2; i < val; i++){   //1은 소수가 아니기 때문에 2부터 시작
+        for(let i = 2; j < i; j++){
+            if(i % j == 0){
+                 isPrime = false;
+            }
+        }
+        if(isPrime){
+            prime.push(i);
+        }
+        isPrime = true;
+    }
+    // //소수구하기
+
+    // 골드바흐파티션
+    for(let n of prime){   //구했던 prime배열을 하나씩 순환
+        if(prime.includes(val - n) && n <= val - n){
+            골드바흐파티션.push([n, val - n]);
+        }
+    }
+    // //골드바흐파티션
+
+    // 골드바흐파티션의 차
+    let 차 = 골드바흐파티션.map((e) => e[1] - e[0]);
+
+    let 작은값 = 골드바흐파티션[차.indexof(Math.min.apply(null,차))];
+    let 큰값 = 골드바흐파티션[차.indexof(Math.max.apply(null,차))];
+    
+    console.log(작은값);
+    console.log(큰값);
+    // //골드바흐파티션의 차
+</script>
+</body>
+</html>
