@@ -32,9 +32,10 @@
     <p class="explanation">5. 루트 노드에서 모든 잎 노드 사이에 있는 검정색 노드의 수는 모두 동일하다.</p>
     <p class="explanation"></p>
     <p class="explanation">그래프 알고리즘 : BFS(넓이 우선 탐색), DFS(깊이 우선 탐색)</p>
-    <p class="explanation">BFS(넓이 우선 탐색)-Queue : FIFO 가까운 정점을 먼저 방문, 먼 정점은 나중에 방문함. 형제 탐색</p>
     <p class="explanation">DFS(깊이 우선 탐색 Depth First Search)-stack : FILO 현재 정점에서 한 방향으로 가면서 검사함. 막힌 정점은 포기하고 마지막에 따라온 간선으로 되돌아 간다.</p>
-    <img class="code" src="./img/13.png" alt="">
+    <p class="explanation">BFS(넓이 우선 탐색 Breadth Frist Search)-Queue : FIFO 가까운 정점을 먼저 방문, 먼 정점은 나중에 방문함. 형제 탐색</p>
+    <img class="code" src="./img/13_1.png" alt="">
+    <img class="code" src="./img/13_2.png" alt="">
     <p class="explanation">
     function makingFree (arr, root, i){
             if(i < arr.length){
@@ -92,6 +93,51 @@
         }
         return visited;
     }
+    console.log(graph);
+
+    /* 최단 경로찾기 */
+    graph = {'A': ['B', 'C'],
+        'B': ['A', 'D', 'E'],
+        'C': ['A', 'F'],
+        'D': ['B'],
+        'E': ['B', 'F'],
+        'F': ['C', 'E']}
+       
+    let user_input = ['A', 'F'];
+    console.log(user_input);
+    const start = user_input[0];
+    const end = user_input[1];
+
+    // 처음에 start를 넣어야 length가 0이 안된다.
+    let queue = [start];
+    let visited = [start];
+
+    function solution(){
+        // count = 어느 넓이에 있는가?
+        // A가 0번째에 있으니 A가 들어온 순간 count가 +1로 되도록 하기 위해 0으로 시작
+        let count = -1;
+
+        while(queue.length !== 0){
+            count += 1;
+            let size = queue.length;
+            for (let i = 0; i < size; i++){
+                // 너비 우선 탐색이기 때문에 0번째 노드를 뽑는게 맞다.
+                let node = queue.splice(0, 1);
+                if(node == end){
+                    return count
+                }
+                for(let next_node in graph[node]){
+                    // 내가 이 노드를 추가하려 하는데 이 노드가 일단은 추가가 안되어 있는가?
+                    if(!visited.includes(graph[node][next_node])){
+                        visited.push(graph[node][next_node]);
+                        queue.push(graph[node][next_node]);
+                    }
+                } 
+            }
+        }
+    }
+    console.log(solution());
+    /* //최단 경로찾기 */
 </script>
 </body>
 </html>
