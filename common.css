@@ -1,4 +1,4 @@
 img {display:block; margin-bottom:5px; width:100%; max-width:740px;}
-.code {width:auto; max-width:auto;}
+.code {width:auto; max-width:unset;}
 .tit {font-size:20px; font-weight:900;}
 .explanation {font-size:18px; font-weight:700;}
