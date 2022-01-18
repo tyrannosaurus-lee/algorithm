@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지뢰찾기</title>
+    <link href="./common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <p class="tit">지뢰찾기</p>
+    <p class="explanation"></p>
+    <img class="code" src="./img/19.png" alt="">
+<script>
+    let 사각형 = 5;
+    let 탐색가능지역 = 3;
+    let 지뢰밭 = [
+        [1, 0, 0, 1, 0],
+        [0, 1, 0, 0, 1],
+        [0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0]
+    ]
+    // 2차원 배열로 풀어서 규칙을 찾아 풀기
+    // [0][0] [0][1] [0][2] 
+    // [1][0] [1][1] [1][2] 
+    // [2][0] [2][1] [2][2] 
+
+    let 가로 = 0;
+    let 세로 = 0;
+    let value = 0;
+    let valueArray = [];
+    for(let 가로 = 0; 가로 <= 사각형-탐색가능지역; 가로++){
+        for(let 세로 = 0; 세로 <= 사각형-탐색가능지역; 가로++){
+            for(let i = 가로; i <= 탐색가능지역-1+가로; i++){
+                for(let j = 세로; j <= 탐색가능지역-1+세로; j++){
+                    console.log(i, j);
+                    value += 지뢰밭[i][j]
+                }
+            }
+            valueArray.push(value);
+            console.log('--------------');
+            value = 0;
+        }
+        console.log('!!!!!!!!');
+    }
+    console.log(valueArray);
+    console.log(Math.max.apply(null, valueArray));
+
+    let maxValue = 0 ;
+    for(let i of valueArray){
+        if(i > maxValue){
+            maxValue = i;
+        }
+    }
+</script>
+</body>
+</html>
