@@ -4,55 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지뢰찾기</title>
+    <title>골드바흐파티션</title>
     <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p class="tit">지뢰찾기</p>
-    <p class="explanation"></p>
+    <p class="tit">골드바흐파티션</p>
+    <p class="explanation">
+        골드바흐파티션 : 2보다 큰 모든 짝수는 두 개의 소수(Prime number)의 합으로 표시할 수 있다는 것이다.
+    </p>
+    <p class="explanation">그 차가 작은 것을 출력하거나 그 차가 큰 것 모두 출력하시오.</p>
     <img class="code" src="./img/19.png" alt="">
 <script>
-    let 사각형 = 5;
-    let 탐색가능지역 = 3;
-    let 지뢰밭 = [
-        [1, 0, 0, 1, 0],
-        [0, 1, 0, 0, 1],
-        [0, 0, 0, 1, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0]
-    ]
-    // 2차원 배열로 풀어서 규칙을 찾아 풀기
-    // [0][0] [0][1] [0][2] 
-    // [1][0] [1][1] [1][2] 
-    // [2][0] [2][1] [2][2] 
+    // 골드바흐 파티션
+    let prime = []; //소수를 저장하는 변수
+    let isPrime = true;// 소수일때 true;
+    let val  = 100; // 주어진 n값
+    let 골드바흐파티션 = [];
 
-    let 가로 = 0;
-    let 세로 = 0;
-    let value = 0;
-    let valueArray = [];
-    for(let 가로 = 0; 가로 <= 사각형-탐색가능지역; 가로++){
-        for(let 세로 = 0; 세로 <= 사각형-탐색가능지역; 가로++){
-            for(let i = 가로; i <= 탐색가능지역-1+가로; i++){
-                for(let j = 세로; j <= 탐색가능지역-1+세로; j++){
-                    console.log(i, j);
-                    value += 지뢰밭[i][j]
-                }
+    // 소수구하기
+    for(let i = 2; i < val; i++){   //1은 소수가 아니기 때문에 2부터 시작
+        for(let i = 2; j < i; j++){
+            if(i % j == 0){
+                 isPrime = false;
             }
-            valueArray.push(value);
-            console.log('--------------');
-            value = 0;
         }
-        console.log('!!!!!!!!');
+        if(isPrime){
+            prime.push(i);
+        }
+        isPrime = true;
     }
-    console.log(valueArray);
-    console.log(Math.max.apply(null, valueArray));
+    // //소수구하기
 
-    let maxValue = 0 ;
-    for(let i of valueArray){
-        if(i > maxValue){
-            maxValue = i;
+    // 골드바흐파티션
+    for(let n of prime){   //구했던 prime배열을 하나씩 순환
+        if(prime.includes(val - n) && n <= val - n){
+            골드바흐파티션.push([n, val - n]);
         }
     }
+    // //골드바흐파티션
+
+    // 골드바흐파티션의 차
+    let 차 = 골드바흐파티션.map((e) => e[1] - e[0]);
+
+    let 작은값 = 골드바흐파티션[차.indexof(Math.min.apply(null,차))];
+    let 큰값 = 골드바흐파티션[차.indexof(Math.max.apply(null,차))];
+
+    console.log(작은값);
+    console.log(큰값);
+    // //골드바흐파티션의 차
 </script>
 </body>
 </html>

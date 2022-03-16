@@ -4,34 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>버스 시간표</title>
+    <title>악수 횟수</title>
     <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p class="tit">버스 시간표</p>
+    <p class="tit">악수 횟수</p>
+    <img src="./img/17.png" alt="">
 <script>
-    // ["12:30", "13:20", "14:13"]
-    // "12:40"
-
-    function solution(버스시간, 기준시간){
-        let answer = [];
-        기준시간 = 기준시간.split(':').map(n => parseInt(n, 10));
-        기준시간 = (기준시간[0] * 60) + 기준시간[1];
-
-        for (let i in 버스시간){
-            let time = 버스시간[i].split(':').map(n => parseInt(n, 10));
-            time = (time[0] * 60) + time[1];
-
-            if (time < 기준시간){
-                answer.push('지나갔습니다');
-            } else{
-                let 시간 = parseInt((time - 기준시간) / 60, 10);
-                let 분 = (time - 기준시간) % 60;
-                answer.push(String(시간).padStart(2, 0) + '시간 ' + String(분).padStart(2, 0) + '분');
+    function solution(n){
+        let 사람 = 0;
+        let 총악수 = 0;
+        let temp = 0;
+        while(true){
+            총악수 = parseInt((사람*(사람-1))/2, 10)
+            if(n < 총악수){
+                break;
             }
+            temp = 총악수;
+            사람 += 1;
         }
-        return answer;
+        return [parseInt(n-temp, 10), 사람];
     }
+
+    const 악수의수 = 59;
+    console.log(solution(악수의수));
+
+    // const 참가자 = ['a', 'b', 'c', 'd', '민규'];
+    // 입력 : 59
+    // n(n-1)/2
+    // 11명 참가자일 때 55
+    // 민규가 4번의 악수
+
+
+    // 3
+    // ['a', 'b']
+    // ['a', 'c']
+    // ['a', 'd']
+
+    // 2
+    // ['b', 'c']
+    // ['b', 'd']
+
+    // 1
+    // ['c', 'd']
+
+    // 참가자 == n + 1(민규)
+    // 악수의 수 = n-1 + n-2 + n-3 ... 1
+    // 100 + 99 + 98 + ... 3 + 2 + 1 == 101 * 50 == 5050
+    // n(n-1)/2
 </script>
 </body>
 </html>

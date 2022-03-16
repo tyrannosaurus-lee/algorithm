@@ -4,54 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>골드바흐파티션</title>
+    <title>버스 시간표</title>
     <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p class="tit">골드바흐파티션</p>
-    <p class="explanation">
-        골드바흐파티션 : 2보다 큰 모든 짝수는 두 개의 소수(Prime number)의 합으로 표시할 수 있다는 것이다.
-    </p>
-    <p class="explanation">그 차가 작은 것을 출력하거나 그 차가 큰 것 모두 출력하시오.</p>
-    <img class="code" src="./img/18.png" alt="">
+    <p class="tit">버스 시간표</p>
 <script>
-    // 골드바흐 파티션
-    let prime = []; //소수를 저장하는 변수
-    let isPrime = true;// 소수일때 true;
-    let val  = 100; // 주어진 n값
-    let 골드바흐파티션 = [];
+    // ["12:30", "13:20", "14:13"]
+    // "12:40"
 
-    // 소수구하기
-    for(let i = 2; i < val; i++){   //1은 소수가 아니기 때문에 2부터 시작
-        for(let i = 2; j < i; j++){
-            if(i % j == 0){
-                 isPrime = false;
+    function solution(버스시간, 기준시간){
+        let answer = [];
+        기준시간 = 기준시간.split(':').map(n => parseInt(n, 10));
+        기준시간 = (기준시간[0] * 60) + 기준시간[1];
+
+        for (let i in 버스시간){
+            let time = 버스시간[i].split(':').map(n => parseInt(n, 10));
+            time = (time[0] * 60) + time[1];
+
+            if (time < 기준시간){
+                answer.push('지나갔습니다');
+            } else{
+                let 시간 = parseInt((time - 기준시간) / 60, 10);
+                let 분 = (time - 기준시간) % 60;
+                answer.push(String(시간).padStart(2, 0) + '시간 ' + String(분).padStart(2, 0) + '분');
             }
         }
-        if(isPrime){
-            prime.push(i);
-        }
-        isPrime = true;
+        return answer;
     }
-    // //소수구하기
-
-    // 골드바흐파티션
-    for(let n of prime){   //구했던 prime배열을 하나씩 순환
-        if(prime.includes(val - n) && n <= val - n){
-            골드바흐파티션.push([n, val - n]);
-        }
-    }
-    // //골드바흐파티션
-
-    // 골드바흐파티션의 차
-    let 차 = 골드바흐파티션.map((e) => e[1] - e[0]);
-
-    let 작은값 = 골드바흐파티션[차.indexof(Math.min.apply(null,차))];
-    let 큰값 = 골드바흐파티션[차.indexof(Math.max.apply(null,차))];
-    
-    console.log(작은값);
-    console.log(큰값);
-    // //골드바흐파티션의 차
 </script>
 </body>
 </html>

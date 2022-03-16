@@ -4,61 +4,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>하노이의 탑</title>
+    <title>연결리스트</title>
     <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p class="tit">하노이의 탑</p>
+    <p class="tit">연결리스트 Linked list</p>
     <img class="code" src="./img/14_1.png" alt="">
-    <img class="code" src="./img/14_2.png" alt="">
 <script>
-    const route = [];
-
-    function hanoi(원반의수, 시작기둥, 목표기둥, 보조기둥){
-    //원판이 한 개일 때에는 바로 옮기면 됩니다.
-    if (원반의수 === 1) {
-        route.push([시작기둥, 목표기둥]);
-        return NaN;
-    }
-
-    //원반이 n-1개를 경유기둥으로 옮기고
-    hanoi(원반의수-1, 시작기둥, 보조기둥, 목표기둥);
-    //가장 큰 원반은 목표기둥으로
-    route.push([시작기둥, 목표기둥]);
-    //경유기둥과 시작기둥을 바꿉니다.
-    hanoi(원반의수-1, 보조기둥, 목표기둥, 시작기둥);
-    }
-
-    hanoi(3, 'A', 'B', 'C');
-    console.log(route);
-    console.log(route.length);
-
-
-
     /*
-    
-    하노이(원반의수, 시작기둥, 목표기둥, 보조기둥)
-
-    function 하노이(1, 'A', 'C', 'B')
-        function 하노이(1, 'A', 'B', 'C')
-            function 하노이(1, 'A', 'C', 'B')
-                원판의이동경로.push('A', 'C')   // 1번째
-            원판의이동경로.push('A', 'B')   // 2번째
-            function 하노이(1, 'C', 'B', 'A')
-                원판의이동경로.push('C', 'B')   // 3번째
-
-        원판의이동경로.push('A', 'C')   // 4번째
-
-        function 하노이(2, 'B', 'C', 'A')
-            function 하노이(1, 'B', 'A', 'C')
-                원판의이동경로.push('B', 'A')   // 5번째
-            원판의이동경로.push('B', 'C')   // 6번째
-            function 하노이(1, 'A', 'C', 'B')
-                원판의이동경로.push('A', 'C')   // 7번째
-
-    // 4개짜리 연습해보기
-
+    const list = {
+        head: {
+            value: 90,
+            next : {
+                value: 10,
+                next: {
+                    value: 89,
+                    next: {
+                        value:10,
+                        next:null
+                    }
+                }
+            }
+        }
+    }
     */
+
+    // 위의 head를 Node로 만들기
+    class Node {
+        constructor(data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    class  LinkedList {
+        constructor(){
+            // class Node의 data에 위 const list의 90,10,89,10 같은 숫자가 들어가는게 아니라 'init'이 들어감
+            let init = new Node('init');
+            // 가장 처음에 오는 Node는 init이다.
+            this.head = init;
+            // 가장 마지막에 오는 Node는 init이다.
+            this.tail = init;
+            // 순회할때 현재 노드가 어디인지를 가리키기 위해 만들어 놓음
+            this.현재노드 = undefined;
+            this.데이터수 = 0;
+        }
+
+        get fullData(){
+            let 순회용현재노드 = this.head;
+            순회용현재노드 = 순회용현재노드.next;
+
+            let s = '';
+            for (let i = 0; i < this.데이터수; i++){
+                s += `${순회용현재노드.data}, `
+            }
+            // array로 쓰고 싶다
+            return JSON.parse(`[${s.slice(0, -2)}]`);
+        }
+
+        // 데이터의 수
+        length(){
+            return this.데이터수;
+        }
+
+        append(data){
+            let 새로운노드 = new Node(data);
+
+            this.tail.next = 새로운노드;
+            this.tail = 새로운노드;
+            this.데이터수 += 1;
+        }
+
+        toString(){
+            let 순회용현재노드 = this.head;
+            순회용현재노드 = 순회용현재노드.next;
+
+            let s = '';
+            for (let i = 0; i < this.데이터수; i++){
+                s += `${순회용현재노드.data}, `
+            }
+            // .slide(0, -1) -> 맨 마지막 값만 빼고 전체를 리턴함
+            return `[${s.slice(0, -2)}]`;
+        }
+
+        // index에 해당하는 곳에 data를 넣어줌
+        insert(index, data){
+            let 순회용현재노드 = this.head;
+            순회용현재노드 = 순회용현재노드.next;
+
+            for (let i = 0; i < index - 1; i++){
+                s += `${순회용현재노드.data}, `
+            }
+            // 노드를 새로 만들어준담에 새로운 노드의 next값이 순회용 현재 노드의 next값을 가리키게 함.
+            // 순회용 현재 노드의 next값을 새로운 노드의 next 값으로 넣어줌.
+            return `[${s.slice(0, -2)}]`;
+        }
+
+    }
+
+    l = new LinkedList();
+    l.append(1);
+    l.append(2);
+    l.append(3);
+    l.append(10);
+    l.append(20);
+    l.append(30);
+    l.insert(2, 1000);
+    l.length(l.length());
+    l.length(l.toString());
 </script>
 </body>
 </html>

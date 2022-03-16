@@ -4,54 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>악수 횟수</title>
+    <title>블럭탑쌓기</title>
     <link href="./common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p class="tit">악수 횟수</p>
-    <img src="./img/17.png" alt="">
+    <p class="tit">블럭탑쌓기</p>
+    <img src="./img/16.png" alt="">
 <script>
-    function solution(n){
-        let 사람 = 0;
-        let 총악수 = 0;
-        let temp = 0;
-        while(true){
-            총악수 = parseInt((사람*(사람-1))/2, 10)
-            if(n < 총악수){
-                break;
-            }
-            temp = 총악수;
-            사람 += 1;
-        }
-        return [parseInt(n-temp, 10), 사람];
+const 전체블록 = ["ABCDEF", "BCAD", "ADEFQRX", "BEDFG", "EFGHZ"];
+const 규칙 = "ABD";
+
+function solution(전체블록, 규칙){
+    let answer = [];
+    for(let 부분블록 of 전체블록){
+        answer.push(블록순서체크(부분블록));
     }
+    return answer;
+}
 
-    const 악수의수 = 59;
-    console.log(solution(악수의수));
+function 블록순서체크(부분블록, 규칙){
+    let 임시변수 = 규칙.indexOf(규칙[0]);
+    for(let 문자 of 부분블록){
+        if(규칙.includes(문자)){
+            if(임시변수 > 규칙.indexOf(문자)){
+                return '불가능';
+            }
+            임시변수 = 규칙.indexOf(문자);
+        }
+    }
+    return '가능';
+}
 
-    // const 참가자 = ['a', 'b', 'c', 'd', '민규'];
-    // 입력 : 59
-    // n(n-1)/2
-    // 11명 참가자일 때 55
-    // 민규가 4번의 악수
-
-
-    // 3
-    // ['a', 'b']
-    // ['a', 'c']
-    // ['a', 'd']
-
-    // 2
-    // ['b', 'c']
-    // ['b', 'd']
-
-    // 1
-    // ['c', 'd']
-
-    // 참가자 == n + 1(민규)
-    // 악수의 수 = n-1 + n-2 + n-3 ... 1
-    // 100 + 99 + 98 + ... 3 + 2 + 1 == 101 * 50 == 5050
-    // n(n-1)/2
+console.log(solution(전체블록, 규칙));
 </script>
 </body>
 </html>
